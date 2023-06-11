@@ -3,7 +3,7 @@
 defined('_JEXEC') or die;
 
 // Access to module parameters
-$file = $params->get('folder', '');
+$folder = $params->get('folder', '');
 echo "Folder: " .$folder;
 
 ?>
