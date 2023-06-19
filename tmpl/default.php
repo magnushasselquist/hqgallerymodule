@@ -28,7 +28,7 @@ if ($numberofFiles > 0) {
     // echo "Det finns också: ". $numberofFiles. " filer.";
     $output .= "{gallery}".$folder."{/gallery}";
 } else {
-    $output .= echo "Det finns inga filer i mappen.";
+    $output .= "Det finns inga filer i mappen.";
 }
 
 // Conditionally prepare the content if the switch is enabled
