@@ -4,7 +4,12 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 
-// Prepare the output
+// See if this page was initiated by someone requesting a certain folder
+// Get the FOLDER variable
+// If possible, also use the module ID to target only the specific module (allowing multiple modules on same page)
+// TODO: CODE..
+
+// Initiate the output variable
 $output = "";
 
 // Retrieve the value of the "prepare_content" parameter
@@ -22,7 +27,7 @@ foreach($scan as $file) {
    if (is_dir("images/$folder/$file")) {
     // $output .= $file.', ';
     $target = $folder."/".$file;
-    $output .= "<a href='#&folder=".$target."'><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' />".$file."</a>";
+    $output .= "<a href='#&folder=".$target."'><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><br />".$file."</a>";
    } else {
     $numberofFiles = $numberofFiles +1;
    }
