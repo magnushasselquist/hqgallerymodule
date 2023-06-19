@@ -14,6 +14,7 @@
 		<filename module="mod_hqgallerymodule">mod_hqgallerymodule.php</filename>
 		<folder>tmpl</folder>
 		<filename>mod_hqgallerymodule.xml</filename>
+        <filename>tmpl/folder.png</filename>
 	</files>
 
 	<!-- Update servers -->
