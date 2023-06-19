@@ -10,12 +10,14 @@ $module = ModuleHelper::getModule('mod_hqgallerymodule');
 if ($module)
 {
     $moduleId = $module->id;
-    echo $moduleId; // TEST
+    // echo $moduleId; // TEST
 }
 
 // See if this page was initiated by someone requesting a certain folder
 if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
     $target=$_GET["target"];
+} else {
+    $target = '';
 }
 
 // Initiate the output variable
@@ -43,14 +45,14 @@ $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
 
 $output .= "<div class='hq-wrapper'>";
-// PRINT FOLDERS
-// TODO: Handle the "up" .. link better, specific design, and prevent above root..
+// INSERT "UP" LINK IF NOT ALREADY IN ROOT
+$target = dirname($folder);
+$output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>UPP</div></div></a>";            
+
+// LOOP FOLDERS
 foreach($scan as $file) {
-    if ($file !='.') {
-        if ($file == '..') {
-            $target = dirname($folder);
-            $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>UPP</div></div></a>";            
-        } else if (is_dir("images/$folder/$file")) {
+    if (($file !='.') && ($file != '..')) {
+        if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
             $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
