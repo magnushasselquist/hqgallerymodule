@@ -46,7 +46,7 @@ $numberofFiles = 0;
 
 $output .= "<div class='hq-wrapper'>";
 // INSERT "UP" LINK IF NOT ALREADY IN ROOT
-if ($target != $folder) {
+if ($folder != $params->get('folder', '')) {
     $target = dirname($folder);
     $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>UPP</div></div></a>";            
 }
