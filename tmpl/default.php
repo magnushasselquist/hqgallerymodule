@@ -18,7 +18,7 @@ foreach($scan as $file) {
    }
 }
 
-if $numberofFiles > 0 {
+if ($numberofFiles > 0) {
     echo "Det finns också: ". $numberofFiles. " filer.";
 } else {
     echo "Det finns inga filer i mappen.";
