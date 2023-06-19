@@ -14,9 +14,9 @@ if ($module)
 }
 
 // See if this page was initiated by someone requesting a certain folder
-// Get the FOLDER variable
-// If possible, also use the module ID to target only the specific module (allowing multiple modules on same page)
-// TODO: CODE..
+if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"] {
+    echo "we have a match!";
+}
 
 // Initiate the output variable
 $output = "";
@@ -48,7 +48,7 @@ foreach($scan as $file) {
     if ($file !='.') {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $output .= "<a href='?moduleid=".$moduleId."&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' />div class='hq-folder-name'>".$file."</div></div></a>";
+            $output .= "<a href='?moduleid=".$moduleId."&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
