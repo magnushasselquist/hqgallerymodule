@@ -86,7 +86,7 @@
                 <field
                     name="prepare_content"
                     type="list"
-                    default="0"
+                    default="1"
                     label="Enable Joomla Content Plugins"
                     description="Enable Joomla Content Plugins processing for module output"
                 >

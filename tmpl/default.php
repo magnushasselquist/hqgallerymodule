@@ -20,7 +20,8 @@ $numberofFiles = 0;
 // PRINT FOLDERS
 foreach($scan as $file) {
    if (is_dir("images/$folder/$file")) {
-    $output .= $file.', ';
+    // $output .= $file.', ';
+    $output .= "<a href='#&folder=".$folder/$file."'><img src='folder.png' />".$file."</a>";
    } else {
     $numberofFiles = $numberofFiles +1;
    }
@@ -28,9 +29,10 @@ foreach($scan as $file) {
 
 if ($numberofFiles > 0) {
     // echo "Det finns också: ". $numberofFiles. " filer.";
+    // TODO: Put start- and end-TAG in configuration instead of hard coding
     $output .= "{gallery}".$folder."{/gallery}";
 } else {
-    $output .= "Det finns inga filer i mappen.";
+    // $output .= "Det finns inga filer i mappen.";
 }
 
 // Conditionally prepare the content if the switch is enabled
