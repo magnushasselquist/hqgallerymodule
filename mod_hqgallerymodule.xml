@@ -82,7 +82,17 @@
                     default="itemid"
                 >
                     <option value="itemid"></option>
-                </field>                        
+                </field>   
+                <field
+                    name="prepare_content"
+                    type="list"
+                    default="0"
+                    label="Enable Joomla Content Plugins"
+                    description="Enable Joomla Content Plugins processing for module output"
+                >
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>                                     
 			</fieldset>
 		</fields>
 	</config>
