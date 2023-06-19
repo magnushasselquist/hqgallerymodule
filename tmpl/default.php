@@ -16,6 +16,10 @@ if ($module)
 // See if this page was initiated by someone requesting a certain folder
 if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
     $target=$_GET["target"];
+    if (!strpos($target, $params->get('folder', ''))) {
+        $target='';
+        echo "Någon har försökt gå över modulens konfigurerade folder."
+    }
 } else {
     $target = '';
 }
