@@ -21,7 +21,8 @@ $numberofFiles = 0;
 foreach($scan as $file) {
    if (is_dir("images/$folder/$file")) {
     // $output .= $file.', ';
-    $output .= "<a href='#&folder=".$folder/$file."'><img src='folder.png' />".$file."</a>";
+    $target = $folder."/".$file;
+    $output .= "<a href='#&folder=".$target."'><img src='folder.png' />".$file."</a>";
    } else {
     $numberofFiles = $numberofFiles +1;
    }
