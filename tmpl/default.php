@@ -19,7 +19,8 @@ foreach($scan as $file) {
 }
 
 if ($numberofFiles > 0) {
-    echo "Det finns också: ". $numberofFiles. " filer.";
+    // echo "Det finns också: ". $numberofFiles. " filer.";
+    echo "{gallery}".$folder."{/gallery}";
 } else {
     echo "Det finns inga filer i mappen.";
 }
