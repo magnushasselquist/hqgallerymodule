@@ -44,9 +44,13 @@ $numberofFiles = 0;
 
 $output .= "<div class='hq-wrapper'>";
 // PRINT FOLDERS
+// TODO: Handle the "up" .. link better, specific design, and prevent above root..
 foreach($scan as $file) {
     if ($file !='.') {
-        if (is_dir("images/$folder/$file")) {
+        if ($file == '..') {
+            $target = dirname($folder);
+            $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>UPP</div></div></a>";            
+        } else if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
             $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
