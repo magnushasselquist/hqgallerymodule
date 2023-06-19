@@ -28,6 +28,9 @@ $output .= "<style>
   grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
   grid-auto-rows: 200px;
 }
+.hq-folder-name {
+    margin-left: 20px;
+  }
 </style>";
 
 // Retrieve the value of the "prepare_content" parameter
@@ -45,7 +48,7 @@ foreach($scan as $file) {
     if ($file !='.') {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $output .= "<a href='#&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><br />".$file."</div></a>";
+            $output .= "<a href='?moduleid=".$moduleId."&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' />div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
