@@ -48,7 +48,7 @@ $output .= "<div class='hq-wrapper'>";
 // INSERT "UP" LINK IF NOT ALREADY IN ROOT
 if ($folder != $params->get('folder', '')) {
     $target = dirname($folder);
-    $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>UPP</div></div></a>";            
+    $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px; opacity: 50%;' /><div class='hq-folder-name'>Tillbaka till: ".dirname($folder)."</div></div></a>";            
 }
 
 // LOOP FOLDERS
