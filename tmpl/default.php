@@ -15,7 +15,7 @@ if ($module)
 
 // See if this page was initiated by someone requesting a certain folder
 if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
-    echo "we have a match!";
+    $target=$_GET["target"];
 }
 
 // Initiate the output variable
@@ -36,8 +36,8 @@ $output .= "<style>
 // Retrieve the value of the "prepare_content" parameter
 $prepareContent = $params->get('prepare_content', 0);
 
-// Access to module parameters
-$folder = $params->get('folder', '');
+// Get target folder from parameters to the page or default to module parameters
+if ($target<>'') $folder=$target; else $folder = $params->get('folder', '');
 
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
@@ -48,7 +48,7 @@ foreach($scan as $file) {
     if ($file !='.') {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $output .= "<a href='?moduleid=".$moduleId."&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
+            $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
