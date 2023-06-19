@@ -2,6 +2,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
+
 // Prepare the output
 $output = "";
 
@@ -37,7 +39,6 @@ if ($prepareContent == 1) {
   $app = Joomla\CMS\Factory::getApplication();
 
   // Prepare the content using Joomla's content preparation methods
-  use Joomla\CMS\HTML\HTMLHelper;
   $output = HTMLHelper::_('content.prepare', $output, '', 'mod_hqgallerymodule');
 }
 
