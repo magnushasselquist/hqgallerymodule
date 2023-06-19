@@ -12,26 +12,37 @@ use Joomla\CMS\HTML\HTMLHelper;
 // Initiate the output variable
 $output = "";
 
+// Set the style for folder listing
+$output .= "<style>
+.hq-wrapper {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-auto-rows: 200px;
+}
+</style>";
+
 // Retrieve the value of the "prepare_content" parameter
 $prepareContent = $params->get('prepare_content', 0);
 
 // Access to module parameters
 $folder = $params->get('folder', '');
-// $output .= "Folder: " .$folder;
 
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
 
+
+$output .= "<div class='hq-wrapper'>";
 // PRINT FOLDERS
 foreach($scan as $file) {
    if (is_dir("images/$folder/$file")) {
     // $output .= $file.', ';
     $target = $folder."/".$file;
-    $output .= "<a href='#&folder=".$target."'><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><br />".$file."</a><br />";
+    $output .= "<a href='#&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><br />".$file."</div></a>";
    } else {
     $numberofFiles = $numberofFiles +1;
    }
 }
+$output .= "</div>";
 
 if ($numberofFiles > 0) {
     // echo "Det finns också: ". $numberofFiles. " filer.";
