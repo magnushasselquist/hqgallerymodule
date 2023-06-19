@@ -6,12 +6,12 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 
 use Joomla\CMS\Helper\ModuleHelper;
-$module = ModuleHelper::getModule('mod_hqgallerymodule');
-if ($module)
-{
+//$module = ModuleHelper::getModule('mod_hqgallerymodule');
+//if ($module)
+//{
     $moduleId = $module->id;
     echo $moduleId; // TEST
-}
+//}
 
 // See if this page was initiated by someone requesting a certain folder
 if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
