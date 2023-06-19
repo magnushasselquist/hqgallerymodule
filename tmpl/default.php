@@ -2,7 +2,16 @@
 
 defined('_JEXEC') or die;
 
+// HTMLhelper behövs för att kunna köra content-prepare på output från modulen
 use Joomla\CMS\HTML\HTMLHelper;
+
+use Joomla\CMS\Helper\ModuleHelper;
+$module = ModuleHelper::getModule('mod_hqgallerymodule');
+if ($module)
+{
+    $moduleId = $module->id;
+    echo $moduleId; // TEST
+}
 
 // See if this page was initiated by someone requesting a certain folder
 // Get the FOLDER variable
