@@ -30,17 +30,17 @@ $folder = $params->get('folder', '');
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
 
-
 $output .= "<div class='hq-wrapper'>";
 // PRINT FOLDERS
 foreach($scan as $file) {
-   if (is_dir("images/$folder/$file")) {
-    // $output .= $file.', ';
-    $target = $folder."/".$file;
-    $output .= "<a href='#&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><br />".$file."</div></a>";
-   } else {
-    $numberofFiles = $numberofFiles +1;
-   }
+    if ($file !='.') {
+        if (is_dir("images/$folder/$file")) {
+            $target = $folder."/".$file;
+            $output .= "<a href='#&folder=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><br />".$file."</div></a>";
+        } else {
+            $numberofFiles = $numberofFiles +1;
+        }
+    }
 }
 $output .= "</div>";
 
