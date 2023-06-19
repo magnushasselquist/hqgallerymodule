@@ -14,7 +14,7 @@ if ($module)
 }
 
 // See if this page was initiated by someone requesting a certain folder
-if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"] {
+if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
     echo "we have a match!";
 }
 
