@@ -74,6 +74,12 @@ if ($numberofFiles > 0) {
     // $output .= "Det finns inga filer i mappen.";
 }
 
+$output .= '<form action="" method="POST" enctype="multipart/form-data">
+<input type="file" name="files[]" multiple>
+<input type="submit" name="Upload" value="Upload" >
+<input type="hidden" name="t" value="'.$folder.'"
+</form>';
+
 // Conditionally prepare the content if the switch is enabled
 if ($prepareContent == 1) {
   // Get the application instance
