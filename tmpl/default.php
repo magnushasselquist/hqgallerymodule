@@ -11,8 +11,8 @@ $moduleId = $module->id;
 echo $moduleId; // DEBUG
 
 // See if this page was initiated by someone requesting a certain folder
-if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
-    $target=$_GET["target"];
+if (isset($_GET["m"]) && $moduleId == $_GET["m"]) {
+    $target=$_GET["g"];
 } else {
     $target = '';
 }
@@ -37,7 +37,7 @@ $output .= "<style>
 $prepareContent = $params->get('prepare_content', 0);
 
 // Get target folder from parameters to the page or default to module parameters
-if (($target<>'') and (strpos($target, '../') == false)) {
+if (($target<>'') && (strpos($target, '../') == false)) {
     $folder=$target; 
 } else {
     $folder = $params->get('folder', '');
@@ -50,7 +50,7 @@ $output .= "<div class='hq-wrapper'>";
 // INSERT "UP" LINK IF NOT ALREADY IN ROOT
 if ($folder != $params->get('folder', '')) {
     $target = dirname($folder);
-    $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px; opacity: 50%;' /><div class='hq-folder-name'>Tillbaka till: ".basename(dirname($folder))."</div></div></a>";            
+    $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px; opacity: 50%;' /><div class='hq-folder-name'>Tillbaka till: ".basename(dirname($folder))."</div></div></a>";            
 }
 
 // LOOP FOLDERS
@@ -58,7 +58,7 @@ foreach($scan as $file) {
     if (($file !='.') && ($file != '..')) {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $output .= "<a href='?moduleid=".$moduleId."&target=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
+            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
