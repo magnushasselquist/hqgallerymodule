@@ -5,13 +5,10 @@ defined('_JEXEC') or die;
 // HTMLhelper behövs för att kunna köra content-prepare på output från modulen
 use Joomla\CMS\HTML\HTMLHelper;
 
+// ModuleHelper behövs för att läsa ut modul-id-t
 use Joomla\CMS\Helper\ModuleHelper;
-//$module = ModuleHelper::getModule('mod_hqgallerymodule');
-//if ($module)
-//{
-    $moduleId = $module->id;
-    echo $moduleId; // TEST
-//}
+$moduleId = $module->id;
+echo $moduleId; // DEBUG
 
 // See if this page was initiated by someone requesting a certain folder
 if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
@@ -19,6 +16,7 @@ if (isset($_GET["moduleid"]) && $moduleId == $_GET["moduleid"]) {
 } else {
     $target = '';
 }
+$target = urldecode($target);
 
 // Initiate the output variable
 $output = "";
@@ -39,7 +37,11 @@ $output .= "<style>
 $prepareContent = $params->get('prepare_content', 0);
 
 // Get target folder from parameters to the page or default to module parameters
-if ($target<>'') $folder=$target; else $folder = $params->get('folder', '');
+if (($target<>'') and (strpos($target, '../') == false)) {
+    $folder=$target; 
+} else {
+    $folder = $params->get('folder', '');
+}
 
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
