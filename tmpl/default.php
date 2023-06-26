@@ -11,10 +11,7 @@ $moduleId = $module->id;
 // echo $moduleId; // DEBUG
 
 // Depending on POST or GET or no request:
-if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
-    // someone requesting to VIEW a certain folder
-    $target=$_GET["g"];
-} else if (isset($_POST["m"]) && $moduleId == $_POST["m"]) { 
+if (isset($_POST["m"]) && $moduleId == $_POST["m"]) { 
     // USER wants to UPLOAD pictures to this module and folder
     $target=$_POST["g"];
     
@@ -82,7 +79,9 @@ if (isset($_GET["m"]) && $moduleId == $_GET["m"]) {
         echo "No files selected.";
     }
 
-
+else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
+    // someone requesting to VIEW a certain folder
+    $target=$_GET["g"];
 } else {
     $target = '';
 }
