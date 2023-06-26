@@ -79,7 +79,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"]) {
         echo "No files selected.";
     }
 
-else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
+} else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
     // someone requesting to VIEW a certain folder
     $target=$_GET["g"];
 } else {
