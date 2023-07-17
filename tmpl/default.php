@@ -10,16 +10,26 @@ use Joomla\CMS\Helper\ModuleHelper;
 $moduleId = $module->id;
 // echo $moduleId; // DEBUG
 
+// Se om användaren har rätt att ladda upp bilder
+use Joomla\CMS\Factory;
+$user = Factory::getUser();
+echo {$user->name}; // DEBUG
+$upload_permission = false; // DEFAULT
+if ($user->authorise('core.edit', 'com_content')) { 
+    echo " har rätt att ladda upp bilder";
+    $upload_permission = true;
+}
+
 // Depending on POST or GET or no request:
-if (isset($_POST["m"]) && $moduleId == $_POST["m"]) { 
-    // USER wants to UPLOAD pictures to this module and folder
+if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
+    // USER wants to UPLOAD pictures to this module and folder and is allowed to
     $target=$_POST["g"];
     
     // Configure upload directory and allowed file types
     $upload_dir = $target;
     $allowed_types = array('jpg', 'png', 'jpeg', 'gif'); // TODO: INTEGRATE WITH JOOMLA?!
     
-    // Define maxsize for files i.e 2MB
+    // Define maxsize for files i.e 200 MB
     $maxsize = 200 * 1024 * 1024; // TODO: GET THIS FROM PHP OR JOOMLA
 
     // Checks if user sent an empty form
@@ -143,12 +153,14 @@ if ($numberofFiles > 0) {
     // $output .= "Det finns inga filer i mappen.";
 }
 
-$output .= '<h3>Ladda upp bilder</h3><form action="" method="POST" enctype="multipart/form-data">
-<input type="file" name="files[]" multiple>
-<input type="submit" name="Upload" value="Upload" >
-<input type="hidden" name="g" value="'.$folder.'">
-<input type="hidden" name="m" value="'.$moduleId.'">
-</form>';
+if ($upload_permission == true) {
+    $output .= '<h3>Ladda upp bilder</h3><form action="" method="POST" enctype="multipart/form-data">
+    <input type="file" name="files[]" multiple>
+    <input type="submit" name="Upload" value="Upload" >
+    <input type="hidden" name="g" value="'.$folder.'">
+    <input type="hidden" name="m" value="'.$moduleId.'">
+    </form>';
+}
 
 // Conditionally prepare the content if the switch is enabled
 if ($prepareContent == 1) {
