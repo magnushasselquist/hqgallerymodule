@@ -13,7 +13,7 @@ $moduleId = $module->id;
 // Se om användaren har rätt att ladda upp bilder
 use Joomla\CMS\Factory;
 $user = Factory::getUser();
-echo {$user->name}; // DEBUG
+echo $user->name; // DEBUG
 $upload_permission = false; // DEFAULT
 if ($user->authorise('core.edit', 'com_content')) { 
     echo " har rätt att ladda upp bilder";
