@@ -27,7 +27,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
     $target=$_POST["g"];
     
     // Configure upload directory and allowed file types
-    $upload_dir = $target;
+    $upload_dir = $target."/";
     echo "Target: ".$target; // DEBUG
     $allowed_types = array('jpg', 'png', 'jpeg', 'gif'); // TODO: INTEGRATE WITH JOOMLA?!
     
