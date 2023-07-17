@@ -28,6 +28,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
     
     // Configure upload directory and allowed file types
     $upload_dir = $target;
+    echo "Target: ".$target; // DEBUG
     $allowed_types = array('jpg', 'png', 'jpeg', 'gif'); // TODO: INTEGRATE WITH JOOMLA?!
     
     // Define maxsize for files i.e 200 MB
@@ -63,7 +64,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
                         echo "{$file_name} successfully uploaded <br />";
                     }
                     else {                    
-                        echo "Error uploading {$file_name} <br />";
+                        echo "Error uploading {$file_name} ({$filepath})<br />";
                     }
                 }
                 else {
@@ -72,7 +73,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
                         echo "{$file_name} successfully uploaded <br />";
                     }
                     else {                    
-                        echo "Error uploading {$file_name} <br />";
+                        echo "Error uploading {$file_name} ({$filepath})<br />";
                     }
                 }
             }
