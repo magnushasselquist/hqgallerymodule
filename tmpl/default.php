@@ -21,24 +21,6 @@ if ($user->authorise('core.edit', 'com_content')) {
     $upload_permission = true;
 }
 
-function getFileCount($path) {
-    $path = "/var/www/scout/images/".$path; // TODO: Not hard coded..
-    return $path;
-}
-//    $size = 0;
-//    $ignore = array('.','..','cgi-bin','.DS_Store');
-//    $files = scandir($path);
-//    foreach($files as $t) {
-//        if(in_array($t, $ignore)) continue;
-//        if (is_dir(rtrim($path, '/') . '/' . $t)) {
-//            $size += getFileCount(rtrim($path, '/') . '/' . $t);
-//        } else {
-//            $size++;
-//        }   
-//    }
-//    return $size;
-//}
-
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER wants to UPLOAD pictures to this module and folder and is allowed to
@@ -157,7 +139,7 @@ foreach($scan as $file) {
     if (($file !='.') && ($file != '..')) {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file.getFileCount($target)."</div></div></a>";
+            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
