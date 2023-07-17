@@ -1,5 +1,6 @@
 <?php
 
+// Make sure we are running this file from Joomla
 defined('_JEXEC') or die;
 
 // HTMLhelper behövs för att kunna köra content-prepare på output från modulen
@@ -44,7 +45,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
             $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
 
             // Set upload file path
-            $filepath = $upload_dir.$file_name; // TODO: ADD DATE/TIME/RND something to make more unique?
+            $filepath = $upload_dir.$file_name; 
 
             // Check file type is allowed or not
             if(in_array(strtolower($file_ext), $allowed_types)) {
