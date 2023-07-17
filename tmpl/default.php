@@ -23,19 +23,21 @@ if ($user->authorise('core.edit', 'com_content')) {
 
 function getFileCount($path) {
     $path = "/var/www/scout/images/".$path; // TODO: Not hard coded..
-    $size = 0;
-    $ignore = array('.','..','cgi-bin','.DS_Store');
-    $files = scandir($path);
-    foreach($files as $t) {
-        if(in_array($t, $ignore)) continue;
-        if (is_dir(rtrim($path, '/') . '/' . $t)) {
-            $size += getFileCount(rtrim($path, '/') . '/' . $t);
-        } else {
-            $size++;
-        }   
-    }
-    return $size;
+    return $path;
 }
+//    $size = 0;
+//    $ignore = array('.','..','cgi-bin','.DS_Store');
+//    $files = scandir($path);
+//    foreach($files as $t) {
+//        if(in_array($t, $ignore)) continue;
+//        if (is_dir(rtrim($path, '/') . '/' . $t)) {
+//            $size += getFileCount(rtrim($path, '/') . '/' . $t);
+//        } else {
+//            $size++;
+//        }   
+//    }
+//    return $size;
+//}
 
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
