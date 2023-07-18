@@ -149,7 +149,7 @@ $output .= "</div>";
 
 // LOOP FOR MOVIES
 foreach($scan as $file) {
-    if (pathinfo($file, PATHINFO_EXTENSION) == "mp4" {
+    if (pathinfo($file, PATHINFO_EXTENSION) == "mp4") {
         $target = $folder."/".$file;
         $output .= "{mp4}".$target."{/mp4}";
     }
