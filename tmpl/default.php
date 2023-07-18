@@ -147,14 +147,6 @@ foreach($scan as $file) {
 }
 $output .= "</div>";
 
-// LOOP FOR MOVIES
-foreach($scan as $file) {
-    if (pathinfo($file, PATHINFO_EXTENSION) == "mp4") {
-        $target = $folder."/".$file;
-        $output .= "{mp4}".$target."{/mp4}";
-    }
-}
-
 if ($numberofFiles > 0) {
     // echo "Det finns också: ". $numberofFiles. " filer.";
     // TODO: Put start- and end-TAG in configuration instead of hard coding
