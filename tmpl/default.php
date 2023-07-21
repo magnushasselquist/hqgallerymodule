@@ -110,9 +110,9 @@ $output .= "<style>
   grid-auto-rows: 200px;
 }
 .hq-folder-name {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;    
+  position: relative;
+  bottom: 25px;
+  left: 25px;    
   }
 </style>";
 
