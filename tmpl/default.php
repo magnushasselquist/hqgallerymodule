@@ -111,8 +111,9 @@ $output .= "<style>
 }
 .hq-folder-name {
   position: relative;
-  bottom: 25px;
-  left: 25px;    
+  bottom: 65px;
+  left: 25px;
+  font-weight: bold;
   }
 </style>";
 
