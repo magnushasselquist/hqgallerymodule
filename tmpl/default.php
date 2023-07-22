@@ -129,6 +129,7 @@ if (($target<>'') && (strpos($target, '../') == false)) {
     $folder=$target; 
 } else {
     $folder = $params->get('folder', '');
+    $target = $folder;
 }
 
 $scan = scandir('images/'.$folder);
