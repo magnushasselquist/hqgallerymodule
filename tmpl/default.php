@@ -11,14 +11,22 @@ use Joomla\CMS\Helper\ModuleHelper;
 $moduleId = $module->id;
 // echo $moduleId; // DEBUG
 
+// Initiate the output variable
+$output = "";
+
 // Se om användaren har rätt att ladda upp bilder
 use Joomla\CMS\Factory;
 $user = Factory::getUser();
-echo $user->name; // DEBUG
+// echo $user->name; // DEBUG
 $upload_permission = false; // DEFAULT
-if ($user->authorise('core.edit', 'com_content')) { 
-    echo " har rätt att ladda upp bilder";
-    $upload_permission = true;
+if ($user->authorise('core.edit', 'com_content')) {
+    // användaren har rätt att ladda upp bilder
+    $output .= '<h3>Ladda upp bilder</h3><form action="" method="POST" enctype="multipart/form-data">
+    <input type="file" name="files[]" multiple>
+    <input type="submit" name="Upload" value="Upload" >
+    <input type="hidden" name="g" value="'.$folder.'">
+    <input type="hidden" name="m" value="'.$moduleId.'">
+    </form>';
 }
 
 // Depending on POST or GET or no request:
@@ -99,8 +107,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
 }
 $target = urldecode($target);
 
-// Initiate the output variable
-$output = "";
+echo $target;
 
 // Set the style for folder listing
 $output .= "<style>
@@ -157,15 +164,6 @@ if ($numberofFiles > 0) {
     $output .= "{gallery}".$folder."{/gallery}";
 } else {
     // $output .= "Det finns inga filer i mappen.";
-}
-
-if ($upload_permission == true) {
-    $output .= '<h3>Ladda upp bilder</h3><form action="" method="POST" enctype="multipart/form-data">
-    <input type="file" name="files[]" multiple>
-    <input type="submit" name="Upload" value="Upload" >
-    <input type="hidden" name="g" value="'.$folder.'">
-    <input type="hidden" name="m" value="'.$moduleId.'">
-    </form>';
 }
 
 // Conditionally prepare the content if the switch is enabled
