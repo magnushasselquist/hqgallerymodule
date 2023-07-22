@@ -21,12 +21,7 @@ $user = Factory::getUser();
 $upload_permission = false; // DEFAULT
 if ($user->authorise('core.edit', 'com_content')) {
     // användaren har rätt att ladda upp bilder
-    $output .= '<h3>Ladda upp bilder</h3><form action="" method="POST" enctype="multipart/form-data">
-    <input type="file" name="files[]" multiple>
-    <input type="submit" name="Upload" value="Upload" >
-    <input type="hidden" name="g" value="'.$folder.'">
-    <input type="hidden" name="m" value="'.$moduleId.'">
-    </form>';
+    $upload_permission = true;
 }
 
 // Depending on POST or GET or no request:
@@ -107,7 +102,8 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
 }
 $target = urldecode($target);
 
-echo $target;
+// print the folder name as header
+echo "<h2>".basename($target)."</h2>";
 
 // Set the style for folder listing
 $output .= "<style>
@@ -157,6 +153,16 @@ foreach($scan as $file) {
     }
 }
 $output .= "</div>";
+
+if ($upload_permission) {
+    // användaren har rätt att ladda upp bilder
+    $output .= '<h3>Ladda upp bilder</h3><form action="" method="POST" enctype="multipart/form-data">
+    <input type="file" name="files[]" multiple>
+    <input type="submit" name="Upload" value="Upload" >
+    <input type="hidden" name="g" value="'.$folder.'">
+    <input type="hidden" name="m" value="'.$moduleId.'">
+    </form>';
+}
 
 if ($numberofFiles > 0) {
     // echo "Det finns också: ". $numberofFiles. " filer.";
