@@ -98,8 +98,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
     // someone requesting to VIEW a certain folder
     $target = $_GET["g"];
 } else {
-    // $target = '';
-    $target = $params->get('folder', '');
+    $target = '';
 }
 $target = urldecode($target);
 
@@ -127,7 +126,7 @@ $prepareContent = $params->get('prepare_content', 0);
 
 // Get target folder from parameters to the page or default to module parameters
 if (($target<>'') && (strpos($target, '../') == false)) {
-    $folder=$target; 
+    $folder = $target; 
 } else {
     $folder = $params->get('folder', '');
 }
