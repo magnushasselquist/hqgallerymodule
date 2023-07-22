@@ -96,9 +96,10 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
 
 } else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
     // someone requesting to VIEW a certain folder
-    $target=$_GET["g"];
+    $target = $_GET["g"];
 } else {
-    $target = '';
+    // $target = '';
+    $target = $params->get('folder', '');
 }
 $target = urldecode($target);
 
@@ -129,7 +130,6 @@ if (($target<>'') && (strpos($target, '../') == false)) {
     $folder=$target; 
 } else {
     $folder = $params->get('folder', '');
-    $target = $folder;
 }
 
 $scan = scandir('images/'.$folder);
