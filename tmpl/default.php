@@ -102,9 +102,6 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
 }
 $target = urldecode($target);
 
-// print the folder name as header
-echo "<h2>".basename($target)."</h2>";
-
 // Set the style for folder listing
 $output .= "<style>
 .hq-wrapper {
@@ -130,6 +127,10 @@ if (($target<>'') && (strpos($target, '../') == false)) {
 } else {
     $folder = $params->get('folder', '');
 }
+
+// print the folder name as header
+echo "<h2>".$folder."</h2>";
+// echo "<h2>".basename($folder)."</h2>";
 
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
