@@ -129,8 +129,7 @@ if (($target<>'') && (strpos($target, '../') == false)) {
 }
 
 // print the folder name as header
-echo "<h2>".$folder."</h2>";
-// echo "<h2>".basename($folder)."</h2>";
+echo "<h2>".basename($folder)."</h2>";
 
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
