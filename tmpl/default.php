@@ -106,7 +106,7 @@ $target = urldecode($target);
 $output .= "<style>
 .hq-wrapper {
   display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  grid-template-columns: repeat( auto-fit, minmax(200px, 0fr) );
   grid-auto-rows: 200px;
   word-wrap: break-word;
 }
