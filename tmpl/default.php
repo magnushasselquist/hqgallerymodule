@@ -149,10 +149,6 @@ foreach($scan as $file) {
             $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
-            if (pathinfo($file, PATHINFO_EXTENSION) == "mp4") {
-                $target = "images/".$folder."/".$file;
-                $output .= "{mp4}".$target."{/mp4}";
-            }
         }
     }
 }
@@ -166,6 +162,14 @@ if ($upload_permission) {
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
     </form>';
+}
+
+foreach($scan as $file) {
+    echo pathinfo($file, PATHINFO_EXTENSION); //DEBUG 
+    if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) == "mp4") {
+        $target = "images/".$folder."/".$file;
+        $output .= "{mp4}".$target."{/mp4}";
+    }
 }
 
 if ($numberofFiles > 0) {
