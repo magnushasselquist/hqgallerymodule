@@ -164,11 +164,10 @@ if ($upload_permission) {
     </form>';
 }
 
+// FIND VIDEOS
 foreach($scan as $file) {
-    echo pathinfo($file, PATHINFO_EXTENSION); //DEBUG 
     if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) == "mp4") {
-        $target = "images/".$folder."/".$file;
-        $output .= "{mp4}".$target."{/mp4}";
+        $output .= "{mp4}".$folder."/".$file."{/mp4}";
     }
 }
 
