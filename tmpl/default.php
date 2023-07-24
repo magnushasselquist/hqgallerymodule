@@ -107,7 +107,7 @@ $output .= "<style>
 .hq-wrapper {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(200px, 0fr) );
-  grid-auto-rows: 200px;
+  grid-auto-rows: 150px;
   word-wrap: break-word;
 }
 .hq-folder-name {
