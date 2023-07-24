@@ -167,7 +167,7 @@ if ($upload_permission) {
 // FIND VIDEOS
 foreach($scan as $file) {
     if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) == "mp4") {
-        $output .= "{mp4}".$folder."/".$file."{/mp4}";
+        $output .= "{mp4}".$folder."/".pathinfo($file, PATHINFO_FILENAME)."{/mp4}";
     }
 }
 
