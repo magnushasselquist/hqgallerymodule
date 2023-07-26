@@ -156,13 +156,7 @@ $output .= "</div>";
 
 if ($upload_permission) {
     // användaren har rätt att ladda upp bilder
-    $output .= '<h3>Skapa ett nytt album i '.basename(dirname($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
-    <input type="text" id ="new_folder" name="new_folder">
-    <input type="submit" name="Skapa" value="Skapa" >
-    <input type="hidden" name="q" value="upload">
-    <input type="hidden" name="g" value="'.$folder.'">
-    <input type="hidden" name="m" value="'.$moduleId.'">
-    </form>';
+
     
     $output .= '<h3>Ladda upp bilder till '.basename(dirname($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="file" name="files[]" multiple>
