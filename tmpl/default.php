@@ -165,8 +165,8 @@ foreach($scan as $file) {
 }
 $output .= "</div>";
 
-if ($upload_permission) {
-    // användaren har rätt att ladda upp bilder
+if (($upload_permission) and ($folder != $params->get('folder', ''))) {
+    // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
     $output .= '<h3>Skapa ny mapp i '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="text" id ="new_folder" name="new_folder">
     <input type="submit" name="Skapa" value="Skapa" >
