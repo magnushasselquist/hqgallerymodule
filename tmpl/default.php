@@ -24,13 +24,15 @@ if ($user->authorise('core.edit', 'com_content')) {
     $upload_permission = true;
 }
 
-function numberOfFiles ($rootDir = '') {
-    $it = new RecursiveIteratorIterator(
-        new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS)
-    );
-    $numberOfFiles = iterator_count($it);
-    return $numberOfFiles;
-}
+if (!function_exists('numberOfFiles'))   {
+    function numberOfFiles ($rootDir = '') {
+        $it = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS)
+        );
+        $numberOfFiles = iterator_count($it);
+        return $numberOfFiles;
+    }
+  }
 
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
