@@ -170,6 +170,7 @@ $output .= "</div>";
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
+  /*
     $output .= '<h3>Skapa ny mapp i '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="text" id ="new_folder" name="new_folder">
     <input type="submit" name="Skapa" value="Skapa" >
@@ -177,7 +178,7 @@ if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
     </form>';
-    
+  */  
     $output .= '<h3>Ladda upp bilder till '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="file" name="files[]" multiple>
     <input type="submit" name="Upload" value="Upload" >
