@@ -123,6 +123,7 @@ $output .= "<style>
   bottom: 65px;
   left: 25px;
   font-weight: bold;
+  color: black;
   }
 </style>";
 
