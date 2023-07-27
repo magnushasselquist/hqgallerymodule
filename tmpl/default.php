@@ -24,6 +24,14 @@ if ($user->authorise('core.edit', 'com_content')) {
     $upload_permission = true;
 }
 
+function numberOfFiles ($rootDir = '') {
+    $it = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS)
+    );
+    $numberOfFiles = iterator_count($it);
+    return $numberOfFiles;
+}
+
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER wants to UPLOAD pictures to this module and folder and is allowed to
@@ -146,7 +154,7 @@ foreach($scan as $file) {
     if (($file !='.') && ($file != '..')) {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."</div></div></a>";
+            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."(".numberOfFiles('/var/www/scout/images/stories').")</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
