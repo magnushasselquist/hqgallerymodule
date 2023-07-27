@@ -146,7 +146,7 @@ $output .= "<div class='hq-wrapper'>";
 // INSERT "UP" LINK IF NOT ALREADY IN ROOT
 if ($folder != $params->get('folder', '')) {
     $target = dirname($folder);
-    $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px; opacity: 50%;' /><div class='hq-folder-name'>Tillbaka till: ".basename(dirname($folder))."</div></div></a>";            
+    $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px; opacity: 50%;' /><div class='hq-folder-name'>Tillbaka till:<br />".basename(dirname($folder))."</div></div></a>";            
 }
 
 // FIND FOLDERS
@@ -156,7 +156,7 @@ foreach($scan as $file) {
             $target = $folder."/".$file;
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles($path);
-            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file." (".$count.")</div></div></a>";
+            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count).")</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
