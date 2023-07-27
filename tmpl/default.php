@@ -155,8 +155,8 @@ foreach($scan as $file) {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
-            $count = numberOfFiles('/var/www/scout/images/stories'); //TODO MAP TO path..
-            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file." (".$path.")</div></div></a>";
+            $count = numberOfFiles($path);
+            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file." (".$count.")</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
         }
