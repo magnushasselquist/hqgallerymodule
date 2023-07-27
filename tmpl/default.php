@@ -124,7 +124,7 @@ $output .= "<style>
   left: 25px;
   font-weight: bold;
   color: black;
-  }
+}
 </style>";
 
 // Retrieve the value of the "prepare_content" parameter
