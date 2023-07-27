@@ -154,7 +154,7 @@ foreach($scan as $file) {
     if (($file !='.') && ($file != '..')) {
         if (is_dir("images/$folder/$file")) {
             $target = $folder."/".$file;
-            $path = $_SERVER['DOCUMENT_ROOT'] . $folder;
+            $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles('/var/www/scout/images/stories'); //TODO MAP TO path..
             $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file." (".$path.")</div></div></a>";
         } else {
