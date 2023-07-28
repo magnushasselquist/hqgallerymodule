@@ -36,7 +36,17 @@
                     filter="" 
                     exclude="" 
                     stripext="" 
-                />                       
+                />     
+                <field
+                    name="show_header"
+                    type="list"
+                    default="1"
+                    label="Show header (name of folder)"
+                    description="Show the header (name of folder) in the module"
+                    >
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>                             
 			</fieldset>
 			<fieldset name="advanced">
 				<field

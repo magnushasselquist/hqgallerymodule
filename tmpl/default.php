@@ -133,6 +133,9 @@ $output .= "<style>
 // Retrieve the value of the "prepare_content" parameter
 $prepareContent = $params->get('prepare_content', 0);
 
+// Retrieve the value of the "show_header" parameter
+$showHeader = $params->get('show_header', 1);
+
 // Get target folder from parameters to the page or default to module parameters
 if (($target<>'') && (strpos($target, '../') == false)) {
     $folder = $target; 
@@ -141,8 +144,10 @@ if (($target<>'') && (strpos($target, '../') == false)) {
 }
 
 // print the folder name as header
-echo "<h2>".basename($folder)."</h2>";
-echo "<p>".dirname($folder)."</p>";
+if (showHeader == 1) {
+    $output .= "<h2>".basename($folder)."</h2>";
+    $output .= "<p>".dirname($folder)."</p>";
+}
 
 $scan = scandir('images/'.$folder);
 $numberofFiles = 0;
