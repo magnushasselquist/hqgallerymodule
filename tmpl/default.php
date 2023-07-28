@@ -30,7 +30,7 @@ if (!function_exists('numberOfFiles'))   {
             new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS)
         );
         $numberOfFiles = iterator_count($it);
-        if ($numberOfFiles == 1) $numberOfFiles = 0;
+        if ($numberOfFiles > 0) $numberOfFiles = $numberOfFiles -1;
         return $numberOfFiles;
     }
   }
