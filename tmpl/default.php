@@ -219,6 +219,8 @@ if ($showVideos == 1) {
 if ($showImages == 1) {
     $output .= "{gallery}".$folder."{/gallery}";
 }
+$output .= "{gallery}".$folder."{/gallery}";
+
 
 // Conditionally prepare the content if the switch is enabled
 if ($prepareContent == 1) {
