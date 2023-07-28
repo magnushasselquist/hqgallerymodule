@@ -37,18 +37,18 @@ if (!function_exists('numberOfFiles'))   {
 
 if (!function_exists('scan_dir'))   {  
     function scan_dir($dir, $order = 0) {
-        // $ignored = array('.', '..');
         $files = array();    
         foreach (scandir($dir) as $file) {
-        //    if (in_array($file, $ignored)) continue;
             $files[$file] = fileatime($dir . '/' . $file);
         }
-        if ($order == 0) asort($files);
-        else if ($order == 1) arsort($files);
+        if ($order == 0) asort($files); // SORT ASC
+        else if ($order == 1) arsort($files); // SORT DESC
         $files = array_keys($files);
         return $files;
     }
 }  
+
+if isset($_POST["q"]) echo $_POST["q"]; // DEBUG
 
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
@@ -228,7 +228,7 @@ $output .= "</div>";
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
-  /*
+  
     $output .= '<h3>Skapa ny mapp i '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="text" id ="new_folder" name="new_folder">
     <input type="submit" name="Skapa" value="Skapa" >
@@ -236,7 +236,7 @@ if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
     </form>';
-  */  
+  
     $output .= '<h3>Ladda upp bilder till '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="file" name="files[]" multiple>
     <input type="submit" name="Upload" value="Upload" >
