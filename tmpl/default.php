@@ -82,7 +82,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
 
                 // Verify file size - 2MB max
                 if ($file_size > $maxsize)        
-                    echo "<div class='cmj-error'>Error: File size is larger than the allowed limit.</div>";
+                    echo "<div class='cmj_error'>Error: File size is larger than the allowed limit.</div>";
 
                 // If file with name already exist then append time in
                 // front of name of the file to avoid overwriting of file
@@ -90,33 +90,33 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
                     $filepath = $upload_dir.time().$file_name;
                     
                     if( move_uploaded_file($file_tmpname, $filepath)) {
-                        echo "<div class='cmj-success'>{$file_name} successfully uploaded </div>";
+                        echo "<div class='cmj_success'>{$file_name} successfully uploaded </div>";
                     }
                     else {                    
-                        echo "<div class='cmj-error'>Error uploading {$file_name} ({$filepath})</div>";
+                        echo "<div class='cmj_error'>Error uploading {$file_name} ({$filepath})</div>";
                     }
                 }
                 else {
                 
                     if( move_uploaded_file($file_tmpname, $filepath)) {
-                        echo "<div class='cmj-success'>{$file_name} successfully uploaded</div>";
+                        echo "<div class='cmj_success'>{$file_name} successfully uploaded</div>";
                     }
                     else {                    
-                        echo "<div class='cmj-error'>Error uploading {$file_name} ({$filepath})</div>";
+                        echo "<div class='cmj_error'>Error uploading {$file_name} ({$filepath})</div>";
                     }
                 }
             }
             else {
                 
                 // If file extension not valid
-                echo "<div class='cmj-error'>Error uploading {$file_name} ({$file_ext} file type is not allowed)</div>>";
+                echo "<div class='cmj_error'>Error uploading {$file_name} ({$file_ext} file type is not allowed)</div>>";
             }
         }
     }
     else {
         
         // If no files selected
-        echo "<div class='cmj-error'>No files selected.</div>";
+        echo "<div class='cmj_error'>No files selected.</div>";
     }
 
 } else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
@@ -229,18 +229,20 @@ $output .= "</div>";
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
   
+    // ECHO OPTION TO CREATE NEW FOLDER
     $output .= '<h3>Skapa ny mapp i '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="text" id ="new_folder" name="new_folder">
     <input type="submit" name="Skapa" value="Skapa" >
-    <input type="hidden" name="q" value="upload">
+    <input type="hidden" name="q" value="new_folder">
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
     </form>';
   
+    // ECHO OPTION TO UPLOAD FILES
     $output .= '<h3>Ladda upp bilder till '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="file" name="files[]" multiple>
     <input type="submit" name="Upload" value="Upload" >
-    <input type="hidden" name="q" value="new_folder">    
+    <input type="hidden" name="q" value="upload">    
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
     </form>';
