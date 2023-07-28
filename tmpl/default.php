@@ -144,7 +144,7 @@ if (($target<>'') && (strpos($target, '../') == false)) {
 }
 
 // print the folder name as header
-if (showHeader == 1) {
+if ($showHeader == 1) {
     $output .= "<h2>".basename($folder)."</h2>";
     $output .= "<p>".dirname($folder)."</p>";
 }
