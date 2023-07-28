@@ -229,12 +229,12 @@ if ($showImages == 1) {
     if (($numberofImages > 1) or ($numberofImages == 1 and $file != "index.html")){
         // echo "Det finns också: ". $numberofFiles. " filer.";
         // TODO: Put start- and end-TAG in configuration instead of hard coding
+        $output .= $numberofImages;
         $output .= "{gallery}".$folder."{/gallery}";
     } else {
         // $output .= "Det finns inga filer i mappen.";
     }
 }
-
 
 // Conditionally prepare the content if the switch is enabled
 if ($prepareContent == 1) {
