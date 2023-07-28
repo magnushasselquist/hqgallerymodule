@@ -195,7 +195,7 @@ foreach($scan as $file) {
     }
 }
 
-if ($numberofFiles > 0) {
+if (($numberofFiles > 1) or ($numberofFiles == 1 and $file != "index.html")){
     // echo "Det finns också: ". $numberofFiles. " filer.";
     // TODO: Put start- and end-TAG in configuration instead of hard coding
     $output .= "{gallery}".$folder."{/gallery}";
