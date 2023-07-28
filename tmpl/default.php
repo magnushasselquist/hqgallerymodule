@@ -213,7 +213,7 @@ foreach($scan as $file) {
 $output .= "</div>";
 
 $output .= $numberofImages; // DEBUG
-$output .= var_dump $file; // DEBUG
+$output .= var_dump($file); // DEBUG
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
@@ -246,7 +246,7 @@ if ($showVideos == 1) {
 
 // FIND AND SHOW IMAGES
 if ($showImages == 1) {
-    if (($numberofImages > 1) or ($numberofImages == 1 and $file != "index.html")){
+    if (($numberofImages > 1) or ($numberofImages == 1 and $file != "index.html")) {
         // echo "Det finns också: ". $numberofFiles. " filer.";
         // TODO: Put start- and end-TAG in configuration instead of hard coding
         $output .= "{gallery}".$folder."{/gallery}";
