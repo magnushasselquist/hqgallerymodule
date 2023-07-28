@@ -146,13 +146,11 @@ div.cmj_success, div.cmj_error {
     border: 1px solid;
     margin: 15px;
     padding: 10px;
-}
-    
+} 
 div.cmj_error  {
     color: #D8000C;
     background-color: #FFBABA;  
-}
-    
+}  
 div.cmj_success {
     color: #4F8A10;
     background-color: #DFF2BF; 
@@ -230,18 +228,18 @@ if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
   
     // ECHO OPTION TO CREATE NEW FOLDER
-    $output .= '<h3>Skapa ny mapp i '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
+  /*  $output .= '<h3>Skapa ny mapp i "'.basename($folder).'"</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="text" id ="new_folder" name="new_folder">
     <input type="submit" name="Skapa" value="Skapa" >
     <input type="hidden" name="q" value="new_folder">
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
-    </form>';
+    </form>'; */
   
     // ECHO OPTION TO UPLOAD FILES
-    $output .= '<h3>Ladda upp bilder till '.basename($folder).'</h3><form action="" method="POST" enctype="multipart/form-data">
+    $output .= '<h3>Ladda upp bilder till "'.basename($folder).'"</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="file" name="files[]" multiple>
-    <input type="submit" name="Upload" value="Upload" >
+    <input type="submit" name="Upload" value="Ladda upp" >
     <input type="hidden" name="q" value="upload">    
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
