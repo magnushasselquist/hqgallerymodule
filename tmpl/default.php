@@ -35,6 +35,19 @@ if (!function_exists('numberOfFiles'))   {
     }
   }
 
+if (!function_exists('scan_dir'))   {  
+    function scan_dir($dir, $order = 0) {
+        $files = array();    
+        foreach (scandir($dir) as $file) {
+            $files[$file] = filemtime($dir . '/' . $file);
+        }
+        if ($order == 0) asort($files);
+        if ($order == 1) arsort($files);
+        $files = array_keys($files);
+        return $files;
+    }
+}  
+
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER wants to UPLOAD pictures to this module and folder and is allowed to
@@ -165,8 +178,10 @@ if ($showHeader == 1) {
     $output .= "<p>".dirname($folder)."</p>";
 }
 
-if ($folderSorting == 0) $scan = scandir('images/'.$folder);
-if ($folderSorting == 1) $scan = scandir('images/'.$folder, 1);
+if ($folderSorting == 0) $scan = scandir('images/'.$folder); 
+else if ($folderSorting == 1) $scan = scandir('images/'.$folder, 1); 
+else if ($folderSorting == 2) $scan = scan_dir('images/'.$folder, 0);
+else if ($folderSorting == 2) $scan = scan_dir('images/'.$folder, 1);
 
 $numberofImages = 0;
 
@@ -229,7 +244,6 @@ if ($showImages == 1) {
     if (($numberofImages > 1) or ($numberofImages == 1 and $file != "index.html")){
         // echo "Det finns också: ". $numberofFiles. " filer.";
         // TODO: Put start- and end-TAG in configuration instead of hard coding
-        $output .= $numberofImages;
         $output .= "{gallery}".$folder."{/gallery}";
     } else {
         // $output .= "Det finns inga filer i mappen.";
