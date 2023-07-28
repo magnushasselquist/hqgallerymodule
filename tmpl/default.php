@@ -39,7 +39,7 @@ if (!function_exists('scan_dir'))   {
     function scan_dir($dir, $order = 0) {
         $files = array();    
         foreach (scandir($dir) as $file) {
-            $files[$file] = filemtime($dir . '/' . $file);
+            $files[$file] = fileatime($dir . '/' . $file);
         }
         if ($order == 0) asort($files);
         if ($order == 1) arsort($files);
