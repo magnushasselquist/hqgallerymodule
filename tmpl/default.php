@@ -213,6 +213,7 @@ foreach($scan as $file) {
 $output .= "</div>";
 
 $output .= $numberofImages; // DEBUG
+$output .= var_dump $file; // DEBUG
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
