@@ -215,6 +215,9 @@ if ($showVideos == 1) {
     }
 }
 
+echo "V: ".$showVideos;
+echo "I: ".$showImages;
+
 // FIND AND SHOW IMAGES
 if ($showImages == 1) {
     $output .= "{gallery}".$folder."{/gallery}";
