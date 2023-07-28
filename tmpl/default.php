@@ -37,8 +37,10 @@ if (!function_exists('numberOfFiles'))   {
 
 if (!function_exists('scan_dir'))   {  
     function scan_dir($dir, $order = 0) {
+        $ignored = array('.', '..');
         $files = array();    
         foreach (scandir($dir) as $file) {
+            if (in_array($file, $ignored)) continue;
             $files[$file] = fileatime($dir . '/' . $file);
         }
         if ($order == 0) asort($files);
