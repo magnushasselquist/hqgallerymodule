@@ -131,7 +131,7 @@ $output .= "<style>
 </style>";
 
 // Retrieve the value of the "prepare_content" parameter
-$prepareContent = $params->get('prepare_content', 0);
+$prepareContent = $params->get('prepare_content', 1);
 
 // Retrieve the value of the "show_header" parameter
 $showHeader = $params->get('show_header', 1);
@@ -222,7 +222,7 @@ if ($showImages == 1) {
         // TODO: Put start- and end-TAG in configuration instead of hard coding
         $output .= "{gallery}".$folder."{/gallery}";
     } else {
-        // $output .= "Det finns inga filer i mappen.";
+        // $output .= "Det finns inga bilder i mappen.";
     }
 }
 
