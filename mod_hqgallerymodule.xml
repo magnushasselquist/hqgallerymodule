@@ -52,7 +52,7 @@
                     type="list"
                     default="1"
                     label="Show images"
-                    description="Show images (print {gallery} tag) or not."
+                    description="Show images (print {gallery} tag) or not"
                     >
                     <option value="0">No</option>
                     <option value="1">Yes</option>
@@ -62,11 +62,23 @@
                     type="list"
                     default="1"
                     label="Show videos"
-                    description="Show videos (print {mp4} tag) or not."
+                    description="Show videos (print {mp4} tag) or not"
                     >
                     <option value="0">No</option>
                     <option value="1">Yes</option>
                 </field>
+                <field
+                    name="folder_sorting"
+                    type="list"
+                    default="0"
+                    label="Folder sorting"
+                    description="Show folders in the following order"
+                    >
+                    <option value="0">Alphabetically ASC</option>
+                    <option value="1">Alphabetically DESC</option>
+                    <option value="2">Date and time added ASC</option>
+                    <option value="3">Date and time added DESC</option>
+                </field>                
                 <field
                     name="limit_folders"
                     type="number"

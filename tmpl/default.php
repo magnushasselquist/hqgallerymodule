@@ -145,6 +145,13 @@ $showVideos = $params->get('show_videos', 1);
 // Retrieve the value of the "limit_folders" parameter
 $limitFolders = $params->get('limit_folders', 0);
 
+// Retrieve the value of the "folder_sorting" parameter
+$folderSorting = $params->get('folder_sorting', 0);
+// 0 : Alphabetically ASC
+// 1 : Alphabetically DESC
+// 2 : Date added ASC
+// 3 : Date added DESC
+
 // Get target folder from parameters to the page or default to module parameters
 if (($target<>'') && (strpos($target, '../') == false)) {
     $folder = $target; 
@@ -158,7 +165,9 @@ if ($showHeader == 1) {
     $output .= "<p>".dirname($folder)."</p>";
 }
 
-$scan = scandir('images/'.$folder);
+if ($folderSorting == 0) $scan = scandir('images/'.$folder);
+if ($folderSorting == 1) $scan = scandir('images/'.$folder, 1);
+
 $numberofImages = 0;
 
 $output .= "<div class='hq-wrapper'>";
