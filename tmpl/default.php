@@ -37,14 +37,14 @@ if (!function_exists('numberOfFiles'))   {
 
 if (!function_exists('scan_dir'))   {  
     function scan_dir($dir, $order = 0) {
-        $ignored = array('.', '..');
+        // $ignored = array('.', '..');
         $files = array();    
         foreach (scandir($dir) as $file) {
-            if (in_array($file, $ignored)) continue;
+        //    if (in_array($file, $ignored)) continue;
             $files[$file] = fileatime($dir . '/' . $file);
         }
         if ($order == 0) asort($files);
-        if ($order == 1) arsort($files);
+        else if ($order == 1) arsort($files);
         $files = array_keys($files);
         return $files;
     }
@@ -211,6 +211,8 @@ foreach($scan as $file) {
     }
 }
 $output .= "</div>";
+
+$output .= $numberofImages; // DEBUG
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
