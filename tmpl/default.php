@@ -137,7 +137,7 @@ $prepareContent = $params->get('prepare_content', 1);
 $showHeader = $params->get('show_header', 1);
 
 // Retrieve the value of the "show_images" parameter
-$showImgaes = $params->get('show_images', 1);
+$showImages = $params->get('show_images', 1);
 
 // Retrieve the value of the "show_videos" parameter
 $showVideos = $params->get('show_videos', 1);
@@ -220,9 +220,14 @@ echo "I: ".$showImages;
 
 // FIND AND SHOW IMAGES
 if ($showImages == 1) {
-    $output .= "{gallery}".$folder."{/gallery}";
+    if (($numberofFiles > 1) or ($numberofFiles == 1 and $file != "index.html")){
+        // echo "Det finns också: ". $numberofFiles. " filer.";
+        // TODO: Put start- and end-TAG in configuration instead of hard coding
+        $output .= "{gallery}".$folder."{/gallery}";
+    } else {
+        // $output .= "Det finns inga filer i mappen.";
+    }
 }
-$output .= "{gallery}".$folder."{/gallery}";
 
 
 // Conditionally prepare the content if the switch is enabled
