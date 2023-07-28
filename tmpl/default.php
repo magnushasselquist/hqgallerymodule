@@ -181,7 +181,7 @@ if ($showHeader == 1) {
 if ($folderSorting == 0) $scan = scandir('images/'.$folder); 
 else if ($folderSorting == 1) $scan = scandir('images/'.$folder, 1); 
 else if ($folderSorting == 2) $scan = scan_dir('images/'.$folder, 0);
-else if ($folderSorting == 2) $scan = scan_dir('images/'.$folder, 1);
+else if ($folderSorting == 3) $scan = scan_dir('images/'.$folder, 1);
 
 $numberofImages = 0;
 
