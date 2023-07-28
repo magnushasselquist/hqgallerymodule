@@ -136,6 +136,15 @@ $prepareContent = $params->get('prepare_content', 0);
 // Retrieve the value of the "show_header" parameter
 $showHeader = $params->get('show_header', 1);
 
+// Retrieve the value of the "show_images" parameter
+$showImgaes = $params->get('show_images', 1);
+
+// Retrieve the value of the "show_videos" parameter
+$showVideos = $params->get('show_videos', 1);
+
+// Retrieve the value of the "limit_folders" parameter
+$limitFolders = $params->get('limit_folders', 0);
+
 // Get target folder from parameters to the page or default to module parameters
 if (($target<>'') && (strpos($target, '../') == false)) {
     $folder = $target; 
@@ -166,6 +175,7 @@ foreach($scan as $file) {
             $target = $folder."/".$file;
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles($path);
+            if (($limitFolders >0) and ($count > $limitFolders)) continue; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
             $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
@@ -194,28 +204,33 @@ if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     </form>';
 }
 
-// FIND VIDEOS
-foreach($scan as $file) {
-    if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) == "mp4") {
-        $output .= "{mp4}".$folder."/".pathinfo($file, PATHINFO_FILENAME)."{/mp4}";
+// FIND AND SHOW VIDEOS
+if ($showVideos == 1) {
+    foreach($scan as $file) {
+        if (strtolower(pathinfo($file, PATHINFO_EXTENSION)) == "mp4") {
+            $output .= "{mp4}".$folder."/".pathinfo($file, PATHINFO_FILENAME)."{/mp4}";
+        }
     }
 }
 
-if (($numberofFiles > 1) or ($numberofFiles == 1 and $file != "index.html")){
-    // echo "Det finns också: ". $numberofFiles. " filer.";
-    // TODO: Put start- and end-TAG in configuration instead of hard coding
-    $output .= "{gallery}".$folder."{/gallery}";
-} else {
-    // $output .= "Det finns inga filer i mappen.";
+// FIND AND SHOW IMAGES
+if ($showImages == 1) {
+    if (($numberofFiles > 1) or ($numberofFiles == 1 and $file != "index.html")){
+        // echo "Det finns också: ". $numberofFiles. " filer.";
+        // TODO: Put start- and end-TAG in configuration instead of hard coding
+        $output .= "{gallery}".$folder."{/gallery}";
+    } else {
+        // $output .= "Det finns inga filer i mappen.";
+    }
 }
 
 // Conditionally prepare the content if the switch is enabled
 if ($prepareContent == 1) {
-  // Get the application instance
-  $app = Joomla\CMS\Factory::getApplication();
+    // Get the application instance
+    $app = Joomla\CMS\Factory::getApplication();
 
-  // Prepare the content using Joomla's content preparation methods
-  $output = HTMLHelper::_('content.prepare', $output, '', 'mod_hqgallerymodule');
+    // Prepare the content using Joomla's content preparation methods
+    $output = HTMLHelper::_('content.prepare', $output, '', 'mod_hqgallerymodule');
 }
 
 // Finally, print the result

@@ -46,7 +46,34 @@
                     >
                     <option value="0">No</option>
                     <option value="1">Yes</option>
-                </field>                             
+                </field>     
+                <field
+                    name="show_images"
+                    type="list"
+                    default="1"
+                    label="Show images"
+                    description="Show images (print {gallery} tag) or not."
+                    >
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field
+                    name="show_videos"
+                    type="list"
+                    default="1"
+                    label="Show videos"
+                    description="Show videos (print {mp4} tag) or not."
+                    >
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field
+                    name="limit_folders"
+                    type="number"
+                    default="0"
+                    label="Limit number of folders"
+                    description="Limit the number of folders shown. 0 = no limit."
+                    />                                                                       
 			</fieldset>
 			<fieldset name="advanced">
 				<field
