@@ -82,7 +82,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
 
                 // Verify file size - 2MB max
                 if ($file_size > $maxsize)        
-                    echo "Error: File size is larger than the allowed limit.";
+                    echo "<div class='cmj-error'>Error: File size is larger than the allowed limit.</div>";
 
                 // If file with name already exist then append time in
                 // front of name of the file to avoid overwriting of file
@@ -90,34 +90,33 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
                     $filepath = $upload_dir.time().$file_name;
                     
                     if( move_uploaded_file($file_tmpname, $filepath)) {
-                        echo "{$file_name} successfully uploaded <br />";
+                        echo "<div class='cmj-success'>{$file_name} successfully uploaded </div>";
                     }
                     else {                    
-                        echo "Error uploading {$file_name} ({$filepath})<br />";
+                        echo "<div class='cmj-error'>Error uploading {$file_name} ({$filepath})</div>";
                     }
                 }
                 else {
                 
                     if( move_uploaded_file($file_tmpname, $filepath)) {
-                        echo "{$file_name} successfully uploaded <br />";
+                        echo "<div class='cmj-success'>{$file_name} successfully uploaded</div>";
                     }
                     else {                    
-                        echo "Error uploading {$file_name} ({$filepath})<br />";
+                        echo "<div class='cmj-error'>Error uploading {$file_name} ({$filepath})</div>";
                     }
                 }
             }
             else {
                 
                 // If file extension not valid
-                echo "Error uploading {$file_name} ";
-                echo "({$file_ext} file type is not allowed)<br / >";
+                echo "<div class='cmj-error'>Error uploading {$file_name} ({$file_ext} file type is not allowed)</div>>";
             }
         }
     }
     else {
         
         // If no files selected
-        echo "No files selected.";
+        echo "<div class='cmj-error'>No files selected.</div>";
     }
 
 } else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
@@ -131,18 +130,33 @@ $target = urldecode($target);
 // Set the style for folder listing
 $output .= "<style>
 .hq-wrapper {
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(200px, 0fr) );
-  grid-auto-rows: 150px;
-  word-wrap: break-word;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 0fr) );
+    grid-auto-rows: 150px;
+    word-wrap: break-word;
 }
 .hq-folder-name {
-  position: relative;
-  bottom: 65px;
-  left: 25px;
-  font-weight: bold;
-  color: black;
+    position: relative;
+    bottom: 65px;
+    left: 25px;
+    font-weight: bold;
+    color: black;
 }
+div.cmj_success, div.cmj_error {
+    border: 1px solid;
+    margin: 15px;
+    padding: 10px;
+}
+    
+div.cmj_error  {
+    color: #D8000C;
+    background-color: #FFBABA;  
+}
+    
+div.cmj_success {
+    color: #4F8A10;
+    background-color: #DFF2BF; 
+}  
 </style>";
 
 // Retrieve the value of the "prepare_content" parameter
