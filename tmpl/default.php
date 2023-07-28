@@ -159,7 +159,7 @@ if ($showHeader == 1) {
 }
 
 $scan = scandir('images/'.$folder);
-// $numberofImages = 0;
+$numberofImages = 0;
 
 $output .= "<div class='hq-wrapper'>";
 // INSERT "UP" LINK IF NOT ALREADY IN ROOT
@@ -180,7 +180,7 @@ foreach($scan as $file) {
             if (($limitFolders >0) and ($countDir > $limitFolders)) break; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
             $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
         } else {
-            // $numberofImages = $numberofImages +1;
+            $numberofImages = $numberofImages +1;
         }
     }
 }
@@ -215,12 +215,9 @@ if ($showVideos == 1) {
     }
 }
 
-echo "V: ".$showVideos;
-echo "I: ".$showImages;
-
 // FIND AND SHOW IMAGES
 if ($showImages == 1) {
-    if (($numberofFiles > 1) or ($numberofFiles == 1 and $file != "index.html")){
+    if (($numberofImages > 1) or ($numberofImages == 1 and $file != "index.html")){
         // echo "Det finns också: ". $numberofFiles. " filer.";
         // TODO: Put start- and end-TAG in configuration instead of hard coding
         $output .= "{gallery}".$folder."{/gallery}";
