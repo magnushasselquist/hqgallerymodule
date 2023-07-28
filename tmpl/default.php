@@ -30,7 +30,7 @@ if (!function_exists('numberOfFiles'))   {
             new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS)
         );
         $numberOfFiles = iterator_count($it);
-        if ($numberOfFiles > 0) $numberOfFiles = $numberOfFiles -1;
+        if ($numberOfFiles > 0) $numberOfFiles = $numberOfFiles -1; // -1 to not count index.html
         return $numberOfFiles;
     }
   }
@@ -197,7 +197,7 @@ if ($folder != $params->get('folder', '')) {
 // FIND FOLDERS
 $countDir = 0;
 foreach($scan as $file) {
-    if (($file !='.') && ($file != '..')) {
+    if (($file !='.') && ($file != '..') && ($file != 'index.html')) {
         if (is_dir("images/$folder/$file")) {
             $countDir = $countDir + 1;
             $target = $folder."/".$file;
@@ -246,8 +246,8 @@ if ($showVideos == 1) {
 
 // FIND AND SHOW IMAGES
 if ($showImages == 1) {
-    if (($numberofImages > 1) or ($numberofImages == 1 and $file != "index.html")) {
-        // echo "Det finns också: ". $numberofFiles. " filer.";
+    if ($numberofImages > 0) {
+        // echo "Det finns också: ". $numberofImages. " filer.";
         // TODO: Put start- and end-TAG in configuration instead of hard coding
         $output .= "{gallery}".$folder."{/gallery}";
     } else {
