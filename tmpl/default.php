@@ -175,7 +175,7 @@ foreach($scan as $file) {
             $target = $folder."/".$file;
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles($path);
-            if (($limitFolders >0) and ($count > $limitFolders)) continue; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
+            if (($limitFolders >0) and ($count > $limitFolders)) break; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
             $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
         } else {
             $numberofFiles = $numberofFiles +1;
