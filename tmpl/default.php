@@ -57,7 +57,7 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
     
     // Configure upload directory and allowed file types
     $upload_dir = "images/".$target."/";
-    echo "Target: ".$target; // DEBUG
+    // echo "Target: ".$target; // DEBUG
     $allowed_types = array('jpg', 'png', 'jpeg', 'gif'); // TODO: INTEGRATE WITH JOOMLA?!
     
     // Define maxsize for files i.e 200 MB
@@ -211,9 +211,6 @@ foreach($scan as $file) {
     }
 }
 $output .= "</div>";
-
-$output .= $numberofImages; // DEBUG
-$output .= var_dump($file); // DEBUG
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
