@@ -48,7 +48,7 @@ if (!function_exists('scan_dir'))   {
     }
 }  
 
-if isset($_POST["q"]) echo $_POST["q"]; // DEBUG
+if (isset($_POST["q"])) echo $_POST["q"]; // DEBUG
 
 // Depending on POST or GET or no request:
 if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
