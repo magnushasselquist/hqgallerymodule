@@ -48,7 +48,7 @@ if (!function_exists('scan_dir'))   {
     }
 }  
 
-// Depending on POST or GET or no request:
+// CHECK USER INTENT
 if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER wants to UPLOAD pictures to this module and folder and is allowed to
     $target=$_POST["g"];
@@ -134,8 +134,8 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
             else echo "<div class='cmj_error'>Could not create folder.</div>";
         } 
     }
-} else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
-    // someone requesting to VIEW a certain folder
+} else if (isset($_GET["m"]) && ($moduleId == $_GET["m"] OR $moduleId =='')) { 
+    // USER WANTS TO VIEW A FOLDER IN THIS MODULE (OR WAS DIRECTED TO THIS URL WITHOUT SPECIFIC MODULEID)
     $target = $_GET["g"];
 
 } else {
@@ -190,7 +190,10 @@ $limitFolders = $params->get('limit_folders', 0);
 
 // Retrieve the value of the "gallery_url" parameter
 $gallery_url = $params->get('gallery_url', '');
-if ($gallery_url <>'' && substr($gallery_url, -1) != '/') $gallery_url = $gallery_url .'/'; // add trailing / to URL 
+if ($gallery_url <>'') {
+    if (substr($gallery_url, -1) != '/') $gallery_url = $gallery_url .'/'; // add trailing / to URL 
+    $moduleId = ''; // Set moduleID to '' to enable recieving URL to display wanted target
+}
 
 // Retrieve the value of the "folder_sorting" parameter
 $folderSorting = $params->get('folder_sorting', 0);
