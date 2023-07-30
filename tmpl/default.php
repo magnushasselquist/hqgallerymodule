@@ -134,7 +134,7 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
             else echo "<div class='cmj_error'>Could not create folder.</div>";
         } 
     }
-} else if (isset($_GET["m"]) && ($moduleId == $_GET["m"] OR $moduleId =='')) { 
+} else if (isset($_GET["m"]) && ($moduleId == $_GET["m"] OR $_GET["m"] =='')) { 
     // USER WANTS TO VIEW A FOLDER IN THIS MODULE (OR WAS DIRECTED TO THIS URL WITHOUT SPECIFIC MODULEID)
     $target = $_GET["g"];
 
