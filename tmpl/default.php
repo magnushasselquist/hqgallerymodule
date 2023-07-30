@@ -123,7 +123,7 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
     // USER WANTS TO CREATE A FOLDER
     $target=$_POST["g"];
     if ((strpos($target, '../') == false) && (strpos($_POST['new_folder'], '/') == false)) {}
-    $new_folder = 'images/'.$target.'/'$_POST['new_folder'];
+    $new_folder = 'images/'.$target.'/'.$_POST['new_folder'];
     echo "new_folder: ".$new_folder; //debug
     if ($_POST['new_folder'] == '') {
         echo "<div class='cmj_error'>Please specify a folder name.</div>";
