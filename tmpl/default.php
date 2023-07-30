@@ -249,7 +249,7 @@ $output .= "</div>";
 
 if ($limitFolders >0) {
     // ECHO LINK TO VIEW MODE FOLDERS IF CAPPED IN THIS MODULE
-    $output .= "<a href='".$gallery_url."?m=".$moduleId."&g=".$folder."'>Klicka här för fler album..</a>";
+    $output .= "<a href='".$gallery_url."?m=".$moduleId."&g=".$folder."'>Visa fler..</a>";
 }
 
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
