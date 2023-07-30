@@ -122,13 +122,15 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
 } else if (isset($_POST["q"]) && $_POST["q"] == 'new_folder' && isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER WANTS TO CREATE A FOLDER
     $target=$_POST["g"];
-    $new_folder = 'images/'.$target.$_POST['new_folder'];
+    if ((strpos($target, '../') == false) && (strpos($_POST['new_folder'], '/') == false)) {}
+    $new_folder = 'images/'.$target.'/'$_POST['new_folder'];
     echo "new_folder: ".$new_folder; //debug
     if (is_dir($new_folder)) {
         echo "<div class='cmj_error'>Folder already exists.</div>";
     } else {
-        // mkdir($new_folder, 0755, true);
-        echo "<div class='cmj_success'>Folder created.</div>";
+        mkdir($new_folder, 0755, false);
+        if (is_dir($new_folder)) echo "<div class='cmj_success'>Folder created.</div>";
+        else echo "<div class='cmj_error'>Could not create folder.</div>";
     } 
     
 } else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
