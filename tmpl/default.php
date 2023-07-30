@@ -51,7 +51,7 @@ if (!function_exists('scan_dir'))   {
 if (isset($_POST["q"])) echo $_POST["q"]; // DEBUG
 
 // Depending on POST or GET or no request:
-if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
+if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER wants to UPLOAD pictures to this module and folder and is allowed to
     $target=$_POST["g"];
     
@@ -119,9 +119,15 @@ if (isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true
         echo "<div class='cmj_error'>No files selected.</div>";
     }
 
+} else if (isset($_POST["q"]) && $_POST["q"] == 'new_folder' && isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
+    // USER WANTS TO CREATE A FOLDER
+    $target=$_POST["g"];
+    echo "new_folder: ".$_POST['new_folder'];
+    
 } else if (isset($_GET["m"]) && $moduleId == $_GET["m"]) { 
     // someone requesting to VIEW a certain folder
     $target = $_GET["g"];
+
 } else {
     $target = '';
 }
@@ -228,13 +234,13 @@ if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
   
     // ECHO OPTION TO CREATE NEW FOLDER
-  /*  $output .= '<h3>Skapa ny mapp i "'.basename($folder).'"</h3><form action="" method="POST" enctype="multipart/form-data">
+    $output .= '<h3>Skapa ny mapp i "'.basename($folder).'"</h3><form action="" method="POST" enctype="multipart/form-data">
     <input type="text" id ="new_folder" name="new_folder">
     <input type="submit" name="Skapa" value="Skapa" >
     <input type="hidden" name="q" value="new_folder">
     <input type="hidden" name="g" value="'.$folder.'">
     <input type="hidden" name="m" value="'.$moduleId.'">
-    </form>'; */
+    </form>'; 
   
     // ECHO OPTION TO UPLOAD FILES
     $output .= '<h3>Ladda upp bilder till "'.basename($folder).'"</h3><form action="" method="POST" enctype="multipart/form-data">
