@@ -188,6 +188,10 @@ $showVideos = $params->get('show_videos', 1);
 // Retrieve the value of the "limit_folders" parameter
 $limitFolders = $params->get('limit_folders', 0);
 
+// Retrieve the value of the "gallery_url" parameter
+$gallery_url = $params->get('gallery_url', '');
+if ($gallery_url <>'' && substr($gallery_url, -1) != '/') $gallery_url = $gallery_url .'/'; // add trailing / to URL 
+
 // Retrieve the value of the "folder_sorting" parameter
 $folderSorting = $params->get('folder_sorting', 0);
 // 0 : Alphabetically ASC
@@ -222,7 +226,7 @@ if ($folder != $params->get('folder', '')) {
     $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px; opacity: 50%;' /><div class='hq-folder-name'>Tillbaka till:<br />".basename(dirname($folder))."</div></div></a>";            
 }
 
-// FIND FOLDERS
+// FIND AND ECHO FOLDERS
 $countDir = 0;
 foreach($scan as $file) {
     if (($file !='.') && ($file != '..') && ($file != 'index.html')) {
@@ -232,7 +236,7 @@ foreach($scan as $file) {
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles($path);
             if (($limitFolders >0) and ($countDir > $limitFolders)) break; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
-            $output .= "<a href='?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
+            $output .= "<a href='".$gallery_url."?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
         } else {
             $numberofImages = $numberofImages +1;
         }

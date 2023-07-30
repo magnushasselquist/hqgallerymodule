@@ -85,7 +85,14 @@
                     default="0"
                     label="Limit number of folders"
                     description="Limit the number of folders shown. 0 = no limit."
-                    />                                                                       
+                    />   
+                <field
+                    name="gallery_url"
+                    type="url"
+                    default=""
+                    label="The URL to be used as base when clicking on the folders"
+                    description="Example: '/arrangemang/galleri'. Default is empty, hence staying in the module when clicking folders."
+                    />                                                                                           
 			</fieldset>
 			<fieldset name="advanced">
 				<field
