@@ -247,6 +247,11 @@ foreach($scan as $file) {
 }
 $output .= "</div>";
 
+if ($limitFolders >0) {
+    // ECHO LINK TO VIEW MODE FOLDERS IF CAPPED IN THIS MODULE
+    $output .= "<a href='".$gallery_url."?m=".$moduleId."&g=".$folder."'>Klicka här för fler album..</a>";
+}
+
 if (($upload_permission) and ($folder != $params->get('folder', ''))) {
     // användaren har rätt att ladda upp bilder och vi är INTE i rooten.
   
