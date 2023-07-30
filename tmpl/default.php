@@ -48,8 +48,6 @@ if (!function_exists('scan_dir'))   {
     }
 }  
 
-if (isset($_POST["q"])) echo $_POST["q"]; // DEBUG
-
 // Depending on POST or GET or no request:
 if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $moduleId == $_POST["m"] && $upload_permission == true) { 
     // USER wants to UPLOAD pictures to this module and folder and is allowed to
@@ -124,7 +122,7 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
     $target=$_POST["g"];
     if ((strpos($target, '../') == false) && (strpos($_POST['new_folder'], '/') == false)) {}
     $new_folder = 'images/'.$target.'/'.$_POST['new_folder'];
-    echo "new_folder: ".$new_folder; //debug
+    // echo "new_folder: ".$new_folder; //debug
     if ($_POST['new_folder'] == '') {
         echo "<div class='cmj_error'>Please specify a folder name.</div>";
     } else {
