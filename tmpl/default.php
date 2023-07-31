@@ -203,7 +203,8 @@ $folderSorting = $params->get('folder_sorting', 0);
 // 3 : Date added DESC
 
 // Get target folder from parameters to the page or default to module parameters
-if (($target<>'') && (strpos($target, '../') == false)) {
+// First some sanity check 
+if (($target<>'') && (strpos($target, '../') == false) && (strpos($target, '/thumbs') == false) && (strpos($target, '/resizedimages') == false)) {
     $folder = $target; 
 } else {
     $folder = $params->get('folder', '');
