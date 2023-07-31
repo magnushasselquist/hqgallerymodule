@@ -232,7 +232,7 @@ if ($folder != $params->get('folder', '')) {
 // FIND AND ECHO FOLDERS
 $countDir = 0;
 foreach($scan as $file) {
-    if (($file !='.') && ($file != '..') && ($file != 'index.html')) {
+    if (($file !='.') && ($file != '..') && ($file != 'thumbs') && ($file != 'resizedimages') && ($file != 'index.html')) {
         if (is_dir("images/$folder/$file")) {
             $countDir = $countDir + 1;
             $target = $folder."/".$file;
