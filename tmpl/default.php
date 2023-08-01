@@ -25,13 +25,23 @@ if ($user->authorise('core.edit', 'com_content')) {
 }
 
 if (!function_exists('numberOfFiles'))   {
-    function numberOfFiles ($rootDir = '') {
-        $it = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS)
-        );
-        $numberOfFiles = iterator_count($it);
-        if ($numberOfFiles > 0) $numberOfFiles = $numberOfFiles -1; // -1 to not count index.html
-        return $numberOfFiles;
+    function numberOfFiles($rootDir) {
+        $fileCount = 0;
+        $dirIterator = new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS);
+        $iterator = new RecursiveIteratorIterator($dirIterator, RecursiveIteratorIterator::SELF_FIRST);
+    
+        foreach ($iterator as $file) {
+            if (!$file->isDir()) {
+                $fileCount++;
+            } else {
+                // Check if the directory name is "thumbs" and skip counting its files
+                if ($file->getBasename() === 'thumbs') {
+                    $iterator->next();
+                }
+            }
+        }
+    
+        return $fileCount;
     }
   }
 
