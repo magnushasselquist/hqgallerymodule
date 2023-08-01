@@ -25,7 +25,7 @@ if ($user->authorise('core.edit', 'com_content')) {
 }
 
 if (!function_exists('numberOfFiles'))   {
-function countFilesRecursively($rootDir) {
+function numberOfFiles($rootDir) {
     $fileCount = 0;
     $dirIterator = new RecursiveDirectoryIterator($rootDir, RecursiveDirectoryIterator::SKIP_DOTS);
     $iterator = new RecursiveIteratorIterator($dirIterator, RecursiveIteratorIterator::SELF_FIRST);
