@@ -52,6 +52,7 @@ if (!function_exists('numberOfFiles'))   {
                 $fileCount++;
             } else {
                 // Check if the directory name is "thumbs" and skip counting its files
+                // TODO: FIX: This does not work. It is counting thumbs also! (also check in the global count-module once solved)
                 if (($file->getBasename() === 'thumbs') OR ($file->getBasename() === 'resizedimages')) {
                     $iterator->next();
                 }
