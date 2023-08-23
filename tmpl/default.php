@@ -144,6 +144,7 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
             echo "<div class='cmj_error'>Folder already exists.</div>";
         } else {
             mkdir($new_folder, 0755, false);
+            file_put_contents($new_folder.'index.html', ''); // Also create an empty index.html file
             if (is_dir($new_folder)) echo "<div class='cmj_success'>Folder created.</div>";
             else echo "<div class='cmj_error'>Could not create folder.</div>";
         } 
