@@ -33,6 +33,7 @@ if (!function_exists('getThumb')) {
             $thumb = "/modules/mod_hqgallerymodule/tmpl/folder.png";
         }
         $thumb = "/modules/mod_hqgallerymodule/tmpl/folder.png"; // TODO: FIX: OVERRIDE FOR NOW.
+        return $thumb;
     }
 }
 
