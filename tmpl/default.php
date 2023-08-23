@@ -254,12 +254,13 @@ foreach($scan as $file) {
             $target = $folder."/".$file;
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles($path);
-            $thumb = scandir($path.'/thumbs/')[2] ; // Find a thumbnail from directory to use
+            $thumb = scandir($path.'/thumbs/')[2] ; // Find a thumbnail from directory to use TODO: GET FROM SUBFOLDERS ALSO..
             if ($thumb <> '') {
                 $thumb = '/images/'.$target."/".$thumb;
             } else {
                 $thumb = "/modules/mod_hqgallerymodule/tmpl/folder.png";
             }
+            $thumb = "/modules/mod_hqgallerymodule/tmpl/folder.png"; // TODO: FIX: OVERRIDE FOR NOW.
             if (($limitFolders >0) and ($countDir > $limitFolders)) break; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
             $output .= "<a href='".$gallery_url."?m=".$moduleId."&g=".$target."'><div><img src='".$thumb."' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
         } else {
