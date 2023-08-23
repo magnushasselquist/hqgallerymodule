@@ -254,8 +254,9 @@ foreach($scan as $file) {
             $target = $folder."/".$file;
             $path = $_SERVER['DOCUMENT_ROOT'] . "/images/" . $target;
             $count = numberOfFiles($path);
+            $thumb = scandir('/var/www/scout/images/'.$target.'/thumbs/')[2]; // TODO: FIX HARDCODING.
             if (($limitFolders >0) and ($countDir > $limitFolders)) break; // STOP PROCESSING FOLDERS IF LIMIT IS SET AND REACHED
-            $output .= "<a href='".$gallery_url."?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
+            $output .= $thumb ."<a href='".$gallery_url."?m=".$moduleId."&g=".$target."'><div><img src='/modules/mod_hqgallerymodule/tmpl/folder.png' style='width: 200px;' /><div class='hq-folder-name'>".$file."<br />(".number_format($count, 0,',',' ').")</div></div></a>";
         } else {
             $numberofImages = $numberofImages +1;
         }
