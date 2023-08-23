@@ -52,7 +52,7 @@ if (!function_exists('numberOfFiles'))   {
                 $fileCount++;
             } else {
                 // Check if the directory name is "thumbs" and skip counting its files
-                if (($file->getBasename() === 'thumbs') OR ($file->getBasename() === 'resizedimages') OR ($file->getBasename() === '..') OR ($file->getBasename() === '.')) {
+                if (($file->getBasename() === 'thumbs') OR ($file->getBasename() === 'resizedimages')) {
                     $iterator->next();
                 }
             }
