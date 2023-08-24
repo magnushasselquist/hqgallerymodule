@@ -46,7 +46,7 @@ if (!function_exists('numberOfFiles'))   {
         foreach ($iterator as $file) {
             if (!$file->isDir()) {
                 // Check if the file name is "index.html" and skip counting it
-                if ($file->getBasename() === 'index.html') {
+                if (($file->getBasename() === 'index.html') or (basename(dirname($file)) === 'thumbs')) {
                     continue;
                 }            
                 $fileCount++;
