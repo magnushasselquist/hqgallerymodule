@@ -84,7 +84,7 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
     // Configure upload directory and allowed file types
     $upload_dir = "images/".$target."/";
     // echo "Target: ".$target; // DEBUG
-    $allowed_types = array('jpg', 'png', 'jpeg', 'gif'); // TODO: INTEGRATE WITH JOOMLA?!
+    $allowed_types = array('jpg', 'png', 'jpeg', 'gif', 'mp4'); // TODO: INTEGRATE WITH JOOMLA?!
     
     // Define maxsize for files i.e 200 MB
     $maxsize = 200 * 1024 * 1024; // TODO: GET THIS FROM PHP OR JOOMLA
