@@ -165,7 +165,12 @@ if (isset($_POST["q"]) && $_POST["q"] == 'upload' && isset($_POST["m"]) && $modu
     }
 } else if (isset($_GET["m"]) && ($moduleId == $_GET["m"] OR $_GET["m"] =='')) { 
     // USER WANTS TO VIEW A FOLDER IN THIS MODULE (OR WAS DIRECTED TO THIS URL WITHOUT SPECIFIC MODULEID)
-    if (is_dir("images/".$GET["g"])) $target = $_GET["g"]; else $target = ''; // TODO: FIX: Verkar inte fungera? /Magnus
+    if (is_dir("images/".$_GET["g"])) {
+        $target = $_GET["g"];
+    }else {
+        echo "<div class='cmj_error'>Could not find folder ".$_GET["g"]."</div>";
+        $target = ''; // TODO: FIX: Verkar inte fungera? /Magnus
+    }
 } else {
     $target = '';
 }
